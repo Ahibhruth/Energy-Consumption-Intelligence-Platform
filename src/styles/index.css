@@ -1,0 +1,232 @@
+/* Global Styles + Theme Tokens (merged so nothing depends on import order) */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #f2f5f3;
+  --surface: #ffffff;
+  --surface2: #f7faf8;
+  --surface3: #eef2ef;
+
+  --border: #e2e8e5;
+  --border2: #d2dbd6;
+
+  --text: #15211c;
+  --text2: #5e6e67;
+  --text3: #94a39c;
+
+  --sidebar-bg: #16332a;
+  --sidebar-bg2: #1d4136;
+  --sidebar-text: #cfe0d8;
+  --sidebar-text-dim: #7fa092;
+
+  --kpi-start: #1f5040;
+  --kpi-end: #123226;
+
+  --blue: #2f6fed;   --blue-dim: #e8eefd;
+  --amber: #d9870e;  --amber-dim: #fdf1de;
+  --red: #dc3a3a;    --red-dim: #fce8e8;
+  --green: #1f9d57;  --green-dim: #e3f6ea;
+  --purple: #7c5fe0; --purple-dim: #ece8fb;
+
+  /* Always include real fallback fonts in case the Google Font fails to load */
+  --font-display: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  --duration-fast: 0.15s;
+  --duration-normal: 0.25s;
+  --duration-slow: 0.4s;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+* {
+  transition-duration: var(--duration-fast);
+  transition-property: background-color, border-color, color, box-shadow, transform, opacity;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body { overflow: hidden; }
+#root { height: 100%; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--text);
+}
+
+h1 { font-size: 26px; }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; font-weight: 600; }
+h4 { font-size: 14px; font-weight: 600; }
+
+p { line-height: 1.6; color: var(--text2); }
+
+a { color: var(--green); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button { font-family: inherit; cursor: pointer; border: none; background: none; outline: none; }
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 9px 12px;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px var(--green-dim);
+}
+
+::selection { background: var(--green); color: #fff; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* ===== Badges (pill style) ===== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-family: var(--mono);
+  letter-spacing: 0.2px;
+}
+
+.badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.badge-ok      { background: var(--green-dim);  color: var(--green); }
+.badge-warn    { background: var(--amber-dim);   color: var(--amber); }
+.badge-danger  { background: var(--red-dim);     color: var(--red); }
+.badge-info    { background: var(--blue-dim);    color: var(--blue); }
+.badge-high    { background: var(--red-dim);     color: var(--red); }
+.badge-medium  { background: var(--amber-dim);   color: var(--amber); }
+.badge-low     { background: var(--amber-dim);   color: var(--amber); }
+.badge-safe    { background: var(--green-dim);   color: var(--green); }
+
+/* ===== Buttons ===== */
+.btn-primary {
+  background: var(--green);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.1px;
+  box-shadow: 0 4px 12px rgba(31, 157, 87, 0.25);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #198a4b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(31, 157, 87, 0.32);
+}
+
+.btn-primary:active:not(:disabled) { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+
+.btn-reconfigure {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--sidebar-text-dim);
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.btn-reconfigure:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ===== Loading ===== */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 60px 20px;
+  color: var(--text3);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-container p { font-size: 12.5px; font-family: var(--mono); }
+
+/* ===== Error ===== */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.error-container h3 { color: var(--red); font-size: 16px; }
+.error-message { color: var(--text2); max-width: 400px; font-size: 13px; }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px;
+  color: var(--text3);
+  font-size: 13px;
+  font-family: var(--mono);
+}
+
+.font-mono { font-family: var(--mono); font-size: 12px; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.mt-sm { margin-top: 8px; } .mt-md { margin-top: 16px; } .mt-lg { margin-top: 24px; }
+.mb-sm { margin-bottom: 8px; } .mb-md { margin-bottom: 16px; } .mb-lg { margin-bottom: 24px; }

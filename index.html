@@ -1,0 +1,45 @@
+<!-- Configuration Modal -->
+<div id="configModal" class="modal">
+  <div class="modal-content">
+    <h2>Databricks Configuration</h2>
+    
+    <label>
+      Workspace URL
+      <input type="text" id="workspaceUrl" placeholder="https://dbc-xxxx.cloud.databricks.com" />
+    </label>
+    
+    <label>
+      Personal Access Token
+      <input type="password" id="token" placeholder="dapi..." />
+    </label>
+    
+    <label>
+      SQL Warehouse HTTP Path
+      <input type="text" id="httpPath" placeholder="/sql/1.0/warehouses/..." />
+    </label>
+    
+    <button onclick="saveConfig()">Connect to Databricks</button>
+  </div>
+</div>
+
+<script>
+function saveConfig() {
+  const url = document.getElementById('workspaceUrl').value.trim();
+  const token = document.getElementById('token').value.trim();
+  const path = document.getElementById('httpPath').value.trim();
+  
+  if (!url || !token || !path) {
+    alert('All fields required');
+    return;
+  }
+  
+  // Save to config
+  DATABRICKS_CONFIG.workspaceUrl = url;
+  DATABRICKS_CONFIG.token = token;
+  DATABRICKS_CONFIG.httpPath = path;
+  
+  // Close modal & load dashboard
+  document.getElementById('configModal').style.display = 'none';
+  loadDashboard();
+}
+</script>

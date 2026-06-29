@@ -1,0 +1,55 @@
+.risk-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+.risk-table thead { border-bottom: 1px solid var(--border); }
+
+.risk-table th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text3);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: var(--mono);
+}
+.risk-table tbody tr:nth-child(even) {
+  background: var(--surface2);
+}
+
+.risk-table tbody tr:nth-child(even):hover {
+  background: var(--surface3);
+}
+.risk-table th:nth-child(1),
+.risk-table td:nth-child(1) {
+  width: 35%;
+  min-width: 140px;
+}
+
+.risk-table th:nth-child(2),
+.risk-table td:nth-child(2) {
+  width: 15%;
+  min-width: 80px;
+}
+
+.risk-table th:nth-child(3),
+.risk-table td:nth-child(3) {
+  width: 30%;
+  min-width: 160px;
+}
+
+.risk-table th:nth-child(4),
+.risk-table td:nth-child(4) {
+  width: 20%;
+  min-width: 100px;
+}
+.risk-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+
+.risk-table td { padding: 13px 12px; border-bottom: 1px solid var(--border); color: var(--text); }
+.risk-table tbody tr:hover { background: var(--surface2); }
+.risk-table .font-mono { font-family: var(--mono); font-size: 12px; color: var(--text2); }
+.risk-table .badge { font-size: 10px; padding: 3px 9px; }
+
+@media (max-width: 768px) {
+  .risk-table { font-size: 12px; }
+  .risk-table th, .risk-table td { padding: 9px; }
+}
