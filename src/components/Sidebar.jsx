@@ -1,69 +1,3 @@
-// /**
-//  * Sidebar Navigation Component
-//  */
-
-// import '../styles/layout.css';
-
-// export function Sidebar({ currentPage, onPageChange, onReconfigure }) {
-//   return (
-//     <div className="sidebar">
-//       <div className="sidebar-header">
-//         <div className="logo">
-//           <span className="logo-dot">●</span>
-//           <h1>EnergyIQ</h1>
-//         </div>
-//         <p className="logo-sub">Smart Meter Network</p>
-//       </div>
-
-//       <nav className="sidebar-nav">
-//         <div className="nav-section">Pages</div>
-        
-//         <button
-//           className={`nav-item ${currentPage === 'overview' ? 'active' : ''}`}
-//           onClick={() => onPageChange('overview')}
-//         >
-//           <span className="nav-icon">📊</span>
-//           Overview
-//         </button>
-
-//         <button
-//           className={`nav-item ${currentPage === 'alerts' ? 'active' : ''}`}
-//           onClick={() => onPageChange('alerts')}
-//         >
-//           <span className="nav-icon">⚠️</span>
-//           Alerts
-//         </button>
-
-//         <button
-//           className={`nav-item ${currentPage === 'cluster' ? 'active' : ''}`}
-//           onClick={() => onPageChange('cluster')}
-//         >
-//           <span className="nav-icon">🎯</span>
-//           Cluster Analysis
-//         </button>
-
-//         <button
-//           className={`nav-item ${currentPage === 'metrics' ? 'active' : ''}`}
-//           onClick={() => onPageChange('metrics')}
-//         >
-//           <span className="nav-icon">📈</span>
-//           Model Metrics
-//         </button>
-//       </nav>
-
-//       <div className="sidebar-footer">
-//         <button className="btn-reconfigure" onClick={onReconfigure}>
-//           ⚙️ Reconfigure
-//         </button>
-//         <p className="connection-status">
-//           <span className="status-dot">●</span>
-//           Connected
-//         </p>
-//       </div>
-//     </div>
-//   );
-// }
-
 /**
  * Sidebar Navigation Component
  * Premium Modern Redesign
@@ -75,7 +9,7 @@ import '../styles/layout.css';
 export function Sidebar({ currentPage, onPageChange, onReconfigure }) {
   return (
     <div className="sidebar">
-      {/* Brand Header */}
+      {/* Brand Header */} 
       <div className="sidebar-header">
         <div className="logo">
           <div className="logo-icon-wrapper">
@@ -121,7 +55,15 @@ export function Sidebar({ currentPage, onPageChange, onReconfigure }) {
           <LineChart size={18} className="nav-icon" />
           <span className="nav-text">Model Metrics</span>
         </button>
-      </nav>
+        
+        <button
+          className={`nav-item ${currentPage === 'anomalies' ? 'active' : ''}`}
+          onClick={() => onPageChange('anomalies')}
+        >
+          <AlertTriangle size={18} className="nav-icon" />
+          <span className="nav-text">Anomaly Detection</span>
+        </button>
+           </nav>
 
       {/* Footer & Status Actions */}
       <div className="sidebar-footer">

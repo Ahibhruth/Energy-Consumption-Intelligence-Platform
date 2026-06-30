@@ -258,5 +258,136 @@
   z-index: 1;
 }
 
+/* new */
+/* ===== Anomaly Cards ===== */
+/* .anomalies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 14px;
+}
+
+.anomaly-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  border-left: 4px solid;
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(16, 40, 32, 0.03);
+}
+
+.anomaly-card:hover {
+  box-shadow: 0 8px 20px rgba(16, 40, 32, 0.06);
+}
+
+.anomaly-critical { border-left-color: var(--red); }
+.anomaly-high     { border-left-color: var(--red); }
+.anomaly-medium   { border-left-color: var(--amber); }
+.anomaly-low      { border-left-color: var(--blue); }
+
+.anomaly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.anomaly-type { display: flex; align-items: center; gap: 8px; }
+.anomaly-icon { font-size: 18px; }
+.anomaly-type h4 { margin: 0; color: var(--text); font-size: 13.5px; }
+
+.anomaly-details p {
+  margin: 5px 0;
+  font-size: 12.5px;
+  color: var(--text2);
+}
+
+.anomaly-details strong { color: var(--text); font-weight: 600; } */
+
+.anomalies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px; /* Slightly increased for better breathing room */
+}
+
+.anomaly-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 20px; /* Uniform, slightly extra padding for premium feel */
+  border: 1px solid var(--border);
+  position: relative; /* Allows for the accent indicator */
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(16, 40, 32, 0.02), 0 1px 0 rgba(16, 40, 32, 0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Modern Hover State: Smooth lift & deeper soft shadow */
+.anomaly-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(16, 40, 32, 0.06);
+  border-color: rgba(16, 40, 32, 0.15);
+}
+
+/* Left Indicator: Changed from a harsh solid border to a sleek accent pill */
+.anomaly-card::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 0;
+  bottom: 16px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  transition: background-color 0.2s ease;
+}
+
+/* Applying colors via the new sleek indicator pill */
+/* .anomaly-critical::before { background-color: var(--red); }
+.anomaly-high::before     { background-color: var(--red); }
+.anomaly-medium::before   { background-color: var(--amber); }
+.anomaly-low::before      { background-color: var(--blue); } */
+
+.anomaly-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border); /* Soft divider below header */
+}
+
+.anomaly-type { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.anomaly-icon { 
+  font-size: 18px;
+  opacity: 0.85; 
+}
+
+.anomaly-type h4 { 
+  margin: 0; 
+  color: var(--text); 
+  font-size: 14px; 
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.anomaly-details p {
+  margin: 8px 0;
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.5; /* Better readability for text */
+  display: flex;
+  justify-content: space-between; /* Aligns data nicely if you use span structures */
+}
+
+.anomaly-details strong { 
+  color: var(--text); 
+  font-weight: 550; 
+}
+
 .exp-item strong { font-size: 13px; color: var(--text); display: block; margin-bottom: 6px; font-weight: 700; }
 .exp-item p { font-size: 12.5px; line-height: 1.55; }

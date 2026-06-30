@@ -103,5 +103,22 @@ export const SQL = {
 
   allMetrics: `
     SELECT model, rmse, mae FROM workspace.default.model_metrics
-  `
+  `,
+  // ===== ANOMALY DETECTION PAGE =====
+
+//   anomalySampleData: `
+//   SELECT DateTime, LCLid, cluster_id, prediction
+//   FROM workspace.default.energy_predictions
+//   WHERE cluster_id != -99
+//   ORDER BY RAND()
+//   LIMIT 2000
+// `,
+anomalySampleData: `
+  SELECT DateTime, LCLid, cluster_id, prediction
+  FROM workspace.default.energy_predictions
+  WHERE cluster_id != -99
+    AND DateTime >= (SELECT MAX(DateTime) FROM workspace.default.energy_predictions) - INTERVAL 7 DAYS
+  ORDER BY DateTime ASC
+  LIMIT 8000
+`,
 };
