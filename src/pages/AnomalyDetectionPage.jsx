@@ -1,9 +1,3 @@
-/**
- * Anomaly Detection Page
- * Runs statistical anomaly detection over real prediction data
- * (z-score + spike detection — no backend, no mock data)
- */
-
 import { useState, useMemo } from 'react';
 import { useDataLoaderBatch } from '../hooks/useDataLoader';
 import { SQL } from '../services/queries';

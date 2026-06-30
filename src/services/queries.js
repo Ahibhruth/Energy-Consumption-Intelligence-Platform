@@ -114,11 +114,16 @@ export const SQL = {
 //   LIMIT 2000
 // `,
 anomalySampleData: `
+  WITH RankedReadings AS (
+    SELECT DateTime, LCLid, cluster_id, prediction,
+           ROW_NUMBER() OVER (PARTITION BY LCLid ORDER BY DateTime DESC) as rn
+    FROM workspace.default.energy_predictions
+    WHERE cluster_id != -99
+  )
   SELECT DateTime, LCLid, cluster_id, prediction
-  FROM workspace.default.energy_predictions
-  WHERE cluster_id != -99
-    AND DateTime >= (SELECT MAX(DateTime) FROM workspace.default.energy_predictions) - INTERVAL 7 DAYS
-  ORDER BY DateTime ASC
-  LIMIT 8000
+  FROM RankedReadings
+  WHERE rn <= 20
+  ORDER BY LCLid, DateTime
+  LIMIT 2000
 `,
 };
